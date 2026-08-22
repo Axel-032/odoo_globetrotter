@@ -1,14 +1,88 @@
 {% load static %}
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <title>trip</title>
+    <title>Create Trip</title>
 </head>
+
 <body>
-    
+
+    <div class="container">
+
+        <h1>Create New Trip</h1>
+
+        <form method="post" enctype="multipart/form-data">
+
+            <!-- Trip Name -->
+            <div class="form-group">
+                <label for="trip_name">Trip Name</label>
+                <select id="trip_name" name="trip">
+                <option value="">Select a trip</option>
+                {% for trip in trips %}
+                <option value="{{ trip.id }}">{{ trip.name }}</option>
+                {% endfor %}
+                </select>
+
+            <!-- Start and End Dates -->
+            <div class="date-row">
+
+                <div class="form-group">
+                    <label for="start_date">Start Date</label>
+                    <input
+                        type="date"
+                        id="start_date"
+                        name="start_date"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="end_date">End Date</label>
+                    <input
+                        type="date"
+                        id="end_date"
+                        name="end_date"
+                        required
+                    >
+                </div>
+
+            </div>
+
+            <!-- Description -->
+            <div class="form-group">
+                <label for="description">Trip Description</label>
+                <textarea
+                    id="description"
+                    name="description"
+                    rows="5"
+                    placeholder="Tell us about your trip..."
+                ></textarea>
+            </div>
+
+            <!-- Cover Photo -->
+            <div class="form-group">
+                <label for="cover_photo">Cover Photo</label>
+                <input
+                    type="file"
+                    id="cover_photo"
+                    name="cover_photo"
+                    accept="image/*"
+                >
+            </div>
+
+            <!-- Save Button -->
+            <button type="submit">
+                Save Trip
+            </button>
+
+        </form>
+
+    </div>
+
 </body>
 </html>

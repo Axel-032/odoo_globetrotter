@@ -28,13 +28,13 @@ class User(models.Model):
 
 
 class Trip(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     start_date = models.DateField()
     end_date = models.DateField()
     description = models.TextField(blank=True)
     cover_photo = models.ImageField(upload_to='trip_covers/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    members = models.ManyToManyField(User, related_name='trips', blank=True)
 
     def __str__(self):
         return self.name

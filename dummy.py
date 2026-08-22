@@ -1,10 +1,14 @@
 from datetime import date, timedelta
 from globetrotter.models import User, Trip
 
-# create a dummy user first if you don't have one
-user, _ = User.objects.get_or_create(
+# create a couple dummy users
+user1, _ = User.objects.get_or_create(
     email="test@example.com",
     defaults={"full_name": "Test User", "agreed_to_terms": True}
+)
+user2, _ = User.objects.get_or_create(
+    email="test2@example.com",
+    defaults={"full_name": "Second User", "agreed_to_terms": True}
 )
 
 trips_data = [
@@ -19,12 +23,14 @@ trips_data = [
 ]
 
 for i, t in enumerate(trips_data):
-    Trip.objects.create(
-        user=user,
+    trip = Trip.objects.create(
         name=t["name"],
         description=t["description"],
         start_date=date.today() + timedelta(days=i * 30),
         end_date=date.today() + timedelta(days=i * 30 + 7),
     )
+    trip.members.add(user1)
+    if i % 2 == 0:  # add user2 to every other trip, to show shared trips
+        trip.members.add(user2)
 
-print(f"Created {len(trips_data)} trips for {user.email}")
+print(f"Created {len(trips_data)} trips.")

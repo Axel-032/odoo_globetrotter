@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.utils import timezone
 from django.views.decorators.http import require_http_methods
 
-from .models import User
+from .models import *
 
 def index(request):
     return render(request, "login.html")
@@ -98,3 +98,7 @@ def dashboard_view(request):
         return redirect("login")
  
     return render(request, "login.html")
+
+def trip(request):
+    trips = Trip.objects.all()
+    return render(request, 'trip.html', {'trips': trips})
