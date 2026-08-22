@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import User
+from .models import *
  
  
 @admin.register(User)
@@ -9,3 +9,5 @@ class UserAdmin(admin.ModelAdmin):
     search_fields = ("full_name", "email")
     list_filter = ("agreed_to_terms",)
     readonly_fields = ("password", "created_at")
+
+admin.site.register(Trip)

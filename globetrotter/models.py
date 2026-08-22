@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.hashers import make_password, check_password
- 
+from django.conf import settings
+
  
 class User(models.Model):
     """
@@ -23,3 +24,17 @@ class User(models.Model):
  
     def __str__(self):
         return self.email
+
+
+
+class Trip(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    start_date = models.DateField()
+    end_date = models.DateField()
+    description = models.TextField(blank=True)
+    cover_photo = models.ImageField(upload_to='trip_covers/', blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
