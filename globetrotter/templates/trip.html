@@ -17,70 +17,100 @@
         <h1>Create New Trip</h1>
 
         <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
 
-            <!-- Trip Name -->
-            <div class="form-group">
-                <label for="trip_name">Trip Name</label>
-                <select id="trip_name" name="trip">
-                <option value="">Select a trip</option>
-                {% for trip in trips %}
-                <option value="{{ trip.id }}">{{ trip.name }}</option>
-                {% endfor %}
-                </select>
+    <!-- Trip Name -->
+    <div class="form-group">
+        <label for="trip_name">Trip Name</label>
+        <select id="trip_name" name="trip" onchange="updateTripDetails()">
+            <option value="">Select a trip</option>
+            {% for trip in trips %}
+                {% if trip.cover_photo %}
+                <option
+                    value="{{ trip.id }}"
+                    data-duration="{{ trip.duration_days }}"
+                    data-description="{{ trip.description }}"
+                    data-cover="{{ trip.cover_photo.url }}"
+                >{{ trip.name }}</option>
+                {% else %}
+                <option
+                    value="{{ trip.id }}"
+                    data-duration="{{ trip.duration_days }}"
+                    data-description="{{ trip.description }}"
+                    data-cover=""
+                >{{ trip.name }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+    </div>
 
-            <!-- Start and End Dates -->
-            <div class="date-row">
+    <!-- Start and End Dates -->
+    <div class="date-row">
 
-                <div class="form-group">
-                    <label for="start_date">Start Date</label>
-                    <input
-                        type="date"
-                        id="start_date"
-                        name="start_date"
-                        required
-                    >
-                </div>
+        <div class="form-group">
+            <label for="start_date">Start Date</label>
+            <input
+                type="date"
+                id="start_date"
+                name="start_date"
+                required
+            >
+        </div>
 
-                <div class="form-group">
-                    <label for="end_date">End Date</label>
-                    <input
-                        type="date"
-                        id="end_date"
-                        name="end_date"
-                        required
-                    >
-                </div>
+        <div class="form-group">
+            <label for="duration_days">Trip Length (days)</label>
+            <input type="number" id="duration_days" name="duration_days" readonly>
+        </div>
 
-            </div>
+    </div>
 
-            <!-- Description -->
-            <div class="form-group">
-                <label for="description">Trip Description</label>
-                <textarea
-                    id="description"
-                    name="description"
-                    rows="5"
-                    placeholder="Tell us about your trip..."
-                ></textarea>
-            </div>
+    <!-- Description -->
+    <div class="form-group">
+        <label for="description">Trip Description</label>
+        <textarea
+            id="description"
+            name="description"
+            rows="5"
+            placeholder="Description of your trip"
+            readonly
+        ></textarea>
+    </div>
 
-            <!-- Cover Photo -->
-            <div class="form-group">
-                <label for="cover_photo">Cover Photo</label>
-                <input
-                    type="file"
-                    id="cover_photo"
-                    name="cover_photo"
-                    accept="image/*"
-                >
-            </div>
+    <!-- Cover Photo -->
+    <div class="form-group">
+        <div class="form-group">
+        <label>Cover Photo</label>
 
-            <!-- Save Button -->
-            <button type="submit">
-                Save Trip
-            </button>
+        <img id="cover_preview" src="" alt="Trip cover preview" style="display:none; max-width:200px;">
+    </div>
 
-        </form>
+    <!-- Save Button -->
+    <button type="submit">
+        Save Trip
+    </button>
+
+</form>
+
+<script>
+    function updateTripDetails() {
+        const select = document.getElementById('trip_name');
+        const selectedOption = select.options[select.selectedIndex];
+
+        document.getElementById('duration_days').value = selectedOption.getAttribute('data-duration') || '';
+        document.getElementById('description').value = selectedOption.getAttribute('data-description') || '';
+
+        const coverUrl = selectedOption.getAttribute('data-cover');
+        const preview = document.getElementById('cover_preview');
+        if (coverUrl) {
+            preview.src = coverUrl;
+            preview.style.display = 'block';
+        } else {
+            preview.src = '';
+            preview.style.display = 'none';
+        }
+    }
+    
+</script>
 
     </div>
 
