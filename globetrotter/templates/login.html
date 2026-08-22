@@ -1,0 +1,220 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GlobeTrotter - Login</title>
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+
+    <!-- ================= AUTH PAGE ================= -->
+
+    <div class="auth-page">
+
+        <!-- LEFT SIDE - BRANDING -->
+
+        <div class="auth-left">
+
+            <div class="brand">
+                <div class="brand-icon">✈</div>
+                <span>GlobeTrotter</span>
+            </div>
+
+            <div class="hero-text">
+
+                <p class="tagline">
+                    ✨ YOUR JOURNEY, YOUR WAY
+                </p>
+
+                <h1>
+                    Plan your trip.
+                    <br>
+                    <span>Live the adventure.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Create personalized multi-city trips, discover amazing
+                    destinations, organize activities and keep your journey
+                    within budget — all in one place.
+                </p>
+
+                <div class="travel-highlights">
+
+                    <div class="highlight">
+                        <span class="highlight-icon">🌍</span>
+                        <div>
+                            <strong>Explore</strong>
+                            <p>Discover beautiful destinations</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight">
+                        <span class="highlight-icon">🗺️</span>
+                        <div>
+                            <strong>Plan</strong>
+                            <p>Build your perfect itinerary</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight">
+                        <span class="highlight-icon">💰</span>
+                        <div>
+                            <strong>Budget</strong>
+                            <p>Track your travel expenses</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="left-footer">
+                <span>© 2026 GlobeTrotter</span>
+                <span>Plan smarter. Travel better.</span>
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE - LOGIN -->
+
+        <div class="auth-right">
+
+            <div class="auth-card">
+
+                <div id="login-section">
+
+                    <div class="auth-header">
+
+                        <h2 id="Wel">Welcome back! 👋</h2>
+
+                        <p>
+                            Login to continue planning your adventures.
+                        </p>
+
+                    </div>
+
+                    {% if messages %}
+                        <ul class="form-errors">
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                    <form method="post" action="{% url 'login' %}">
+
+                        {% csrf_token %}
+
+                        <!-- Email -->
+
+                        <div class="form-group">
+
+                            <label for="login-email">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="login-email"
+                                name="email"
+                                placeholder="you@example.com"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- Password -->
+
+                        <div class="form-group">
+
+                            <div class="label-row">
+
+                                <label for="login-password">
+                                    Password
+                                </label>
+
+                                <a href="#" class="forgot-link">
+                                    Forgot password?
+                                </a>
+
+                            </div>
+
+                            <input
+                                type="password"
+                                id="login-password"
+                                name="password"
+                                placeholder="Enter your password"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- Remember -->
+
+                        <div class="remember-row">
+
+                            <label class="checkbox-label">
+
+                                <input
+                                    type="checkbox"
+                                    name="remember_me"
+                                >
+
+                                <span>Remember me</span>
+
+                            </label>
+
+                        </div>
+
+
+                        <!-- Login button -->
+
+                        <button
+                            type="submit"
+                            class="auth-btn"
+                        >
+                            Login
+                        </button>
+
+                    </form>
+
+
+                    <!-- Divider -->
+
+                    <div class="divider">
+                        <span>OR</span>
+                    </div>
+
+
+                    <!-- Signup -->
+
+                    <p class="switch-text">
+
+                        Don't have an account?
+
+                        <a href="{% url 'signup' %}" class="switch-btn">
+                            Sign up
+                        </a>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
