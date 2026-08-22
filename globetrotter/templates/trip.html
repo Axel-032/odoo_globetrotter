@@ -6,12 +6,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
     <title>Create Trip</title>
 </head>
 
 <body>
-
+  <div id="a">
     <div class="container">
 
         <h1>Create New Trip</h1>
@@ -42,12 +42,7 @@
                 {% endif %}
             {% endfor %}
         </select>
-    </div>
-
-    <!-- Start and End Dates -->
-    <div class="date-row">
-
-        <div class="form-group">
+        
             <label for="start_date">Start Date</label>
             <input
                 type="date"
@@ -55,18 +50,12 @@
                 name="start_date"
                 required
             >
-        </div>
+           <br>
 
-        <div class="form-group">
             <label for="duration_days">Trip Length (days)</label>
             <input type="number" id="duration_days" name="duration_days" readonly>
-        </div>
-
-    </div>
-
-    <!-- Description -->
-    <div class="form-group">
-        <label for="description">Trip Description</label>
+        
+            <label for="description">Trip Description</label>
         <textarea
             id="description"
             name="description"
@@ -74,23 +63,25 @@
             placeholder="Description of your trip"
             readonly
         ></textarea>
-    </div>
-
-    <!-- Cover Photo -->
-    <div class="form-group">
-        <div class="form-group">
+          <div class="form-group1">
         <label>Cover Photo</label>
 
         <img id="cover_preview" src="" alt="Trip cover preview" style="display:none; max-width:200px;">
-    </div>
 
-    <!-- Save Button -->
-    <button type="submit">
+         <!-- Save Button -->
+           <button type="submit">
         Save Trip
     </button>
+   
 
+    </div>
+
+    <!-- Description -->
+    
+
+   
 </form>
-
+</div>
 <script>
     function updateTripDetails() {
         const select = document.getElementById('trip_name');

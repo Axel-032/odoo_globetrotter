@@ -1,0 +1,17 @@
+body{
+    background-color: #9FA1FF;
+  
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    
+   justify-content: space-evenly;
+    align-items: center;
+    
+   
+}
+textarea{
+    width: 500px;
+}
