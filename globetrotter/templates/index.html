@@ -1,0 +1,465 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GlobeTrotter - Login</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <!-- ================= AUTH PAGE ================= -->
+
+    <div class="auth-page">
+
+        <!-- LEFT SIDE - BRANDING -->
+
+        <div class="auth-left">
+
+            <div class="brand">
+                <div class="brand-icon">✈</div>
+                <span>GlobeTrotter</span>
+            </div>
+
+            <div class="hero-text">
+
+                <p class="tagline">
+                    ✨ YOUR JOURNEY, YOUR WAY
+                </p>
+
+                <h1>
+                    Plan your trip.
+                    <br>
+                    <span>Live the adventure.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Create personalized multi-city trips, discover amazing
+                    destinations, organize activities and keep your journey
+                    within budget — all in one place.
+                </p>
+
+                <div class="travel-highlights">
+
+                    <div class="highlight">
+                        <span class="highlight-icon">🌍</span>
+                        <div>
+                            <strong>Explore</strong>
+                            <p>Discover beautiful destinations</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight">
+                        <span class="highlight-icon">🗺️</span>
+                        <div>
+                            <strong>Plan</strong>
+                            <p>Build your perfect itinerary</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight">
+                        <span class="highlight-icon">💰</span>
+                        <div>
+                            <strong>Budget</strong>
+                            <p>Track your travel expenses</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="left-footer">
+                <span>© 2026 GlobeTrotter</span>
+                <span>Plan smarter. Travel better.</span>
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE - LOGIN/SIGNUP -->
+
+        <div class="auth-right">
+
+            <div class="auth-card">
+
+                <!-- ================= LOGIN FORM ================= -->
+
+                <div id="login-section">
+
+                    <div class="auth-header">
+
+                        <h2>Welcome back! 👋</h2>
+
+                        <p>
+                            Login to continue planning your adventures.
+                        </p>
+
+                    </div>
+
+
+                    <form id="login-form">
+
+                        <!-- Email -->
+
+                        <div class="form-group">
+
+                            <label for="login-email">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="login-email"
+                                name="email"
+                                placeholder="you@example.com"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- Password -->
+
+                        <div class="form-group">
+
+                            <div class="label-row">
+
+                                <label for="login-password">
+                                    Password
+                                </label>
+
+                                <a href="#" class="forgot-link">
+                                    Forgot password?
+                                </a>
+
+                            </div>
+
+                            <input
+                                type="password"
+                                id="login-password"
+                                name="password"
+                                placeholder="Enter your password"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- Remember -->
+
+                        <div class="remember-row">
+
+                            <label class="checkbox-label">
+
+                                <input
+                                    type="checkbox"
+                                    name="remember"
+                                >
+
+                                <span>Remember me</span>
+
+                            </label>
+
+                        </div>
+
+
+                        <!-- Login button -->
+
+                        <button
+                            type="submit"
+                            class="auth-btn"
+                        >
+                            Login
+                        </button>
+
+                    </form>
+
+
+                    <!-- Divider -->
+
+                    <div class="divider">
+                        <span>OR</span>
+                    </div>
+
+
+                    <!-- Signup -->
+
+                    <p class="switch-text">
+
+                        Don't have an account?
+
+                        <button
+                            type="button"
+                            class="switch-btn"
+                            onclick="showSignup()"
+                        >
+                            Sign up
+                        </button>
+
+                    </p>
+
+                </div>
+
+
+                <!-- ================= SIGNUP FORM ================= -->
+
+                <div id="signup-section" class="hidden">
+
+                    <div class="auth-header">
+
+                        <h2>Create your account ✨</h2>
+
+                        <p>
+                            Start planning your next adventure today.
+                        </p>
+
+                    </div>
+
+
+                    <form id="signup-form">
+
+                        <!-- Full Name -->
+
+                        <div class="form-group">
+
+                            <label for="signup-name">
+                                Full Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="signup-name"
+                                name="name"
+                                placeholder="Enter your full name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- Email -->
+
+                        <div class="form-group">
+
+                            <label for="signup-email">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="signup-email"
+                                name="email"
+                                placeholder="you@example.com"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- Password -->
+
+                        <div class="form-group">
+
+                            <label for="signup-password">
+                                Password
+                            </label>
+
+                            <input
+                                type="password"
+                                id="signup-password"
+                                name="password"
+                                placeholder="Create a password"
+                                minlength="6"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- Confirm Password -->
+
+                        <div class="form-group">
+
+                            <label for="confirm-password">
+                                Confirm Password
+                            </label>
+
+                            <input
+                                type="password"
+                                id="confirm-password"
+                                name="confirm_password"
+                                placeholder="Confirm your password"
+                                minlength="6"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- Terms -->
+
+                        <label class="terms-label">
+
+                            <input
+                                type="checkbox"
+                                required
+                            >
+
+                            <span>
+                                I agree to the
+                                <a href="#">Terms & Conditions</a>
+                            </span>
+
+                        </label>
+
+
+                        <!-- Signup button -->
+
+                        <button
+                            type="submit"
+                            class="auth-btn"
+                        >
+                            Create Account
+                        </button>
+
+                    </form>
+
+
+                    <!-- Divider -->
+
+                    <div class="divider">
+                        <span>OR</span>
+                    </div>
+
+
+                    <!-- Login -->
+
+                    <p class="switch-text">
+
+                        Already have an account?
+
+                        <button
+                            type="button"
+                            class="switch-btn"
+                            onclick="showLogin()"
+                        >
+                            Login
+                        </button>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /*
+         * Switch from Login to Signup
+         */
+
+        function showSignup() {
+
+            document
+                .getElementById("login-section")
+                .classList.add("hidden");
+
+            document
+                .getElementById("signup-section")
+                .classList.remove("hidden");
+
+        }
+
+
+        /*
+         * Switch from Signup to Login
+         */
+
+        function showLogin() {
+
+            document
+                .getElementById("signup-section")
+                .classList.add("hidden");
+
+            document
+                .getElementById("login-section")
+                .classList.remove("hidden");
+
+        }
+
+
+        /*
+         * Basic Login Validation
+         */
+
+        document
+            .getElementById("login-form")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                const email =
+                    document.getElementById("login-email").value;
+
+                const password =
+                    document.getElementById("login-password").value;
+
+                if (email === "" || password === "") {
+
+                    alert("Please fill in all fields.");
+
+                    return;
+
+                }
+
+                alert("Login successful! Backend integration will be added.");
+
+            });
+
+
+        /*
+         * Basic Signup Validation
+         */
+
+        document
+            .getElementById("signup-form")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                const password =
+                    document.getElementById("signup-password").value;
+
+                const confirmPassword =
+                    document.getElementById("confirm-password").value;
+
+                if (password !== confirmPassword) {
+
+                    alert("Passwords do not match.");
+
+                    return;
+
+                }
+
+                alert("Account created successfully! Backend integration will be added.");
+
+            });
+
+    </script>
+
+</body>
+
+</html>
