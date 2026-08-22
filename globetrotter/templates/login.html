@@ -9,12 +9,13 @@
     <title>GlobeTrotter - Login</title>
  
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="shortcut icon" href="{%static 'images/favicon.svg' %}" type="image/x-icon">
 </head>
  
 <body>
  
     <!-- ================= AUTH PAGE ================= -->
- 
+    <div class="sideimg"></div>
     <div id="Imag"></div>
     <div class="auth-page">
  
@@ -24,7 +25,7 @@
  
             <div class="brand">
                 <div class="brand-icon">✈</div>
-                <span id="Head1">GlobeTrotter</span>
+                <span id="Head1">GlobeTraveller</span>
             </div>
  
             <div class="hero-text">
@@ -41,7 +42,9 @@
  
                 <p class="hero-description">
                     Create personalized multi-city trips, discover amazing
+                    <br>
                     destinations, organize activities and keep your journey
+                    <br>
                     within budget — all in one place.
                 </p>
  
@@ -75,11 +78,7 @@
  
             </div>
  
-            <div class="left-footer">
-                <span>© 2026 GlobeTrotter</span>
-                <span>Plan smarter. Travel better.</span>
-            </div>
- 
+           
         </div>
  
  
@@ -186,12 +185,13 @@
                             </button>
  
                         </div>
- 
+   
                     </form>
  
  
                     <!-- Divider -->
- 
+                     <br>
+                     <br>
                     <div class="divider">
                         <span>OR</span>
                     </div>
@@ -206,16 +206,20 @@
                         <a href="{% url 'signup' %}" class="switch-btn">
                             Sign up
                         </a>
- 
+                         
                     </p>
- 
+                  
                 </div>
- 
+               
             </div>
  
         </div>
  
     </div>
+     <div class="left-footer">
+                <span>© 2026 GlobeTrotter</span>
+                <span>Plan smarter. Travel better.</span>
+            </div>
  
 </body>
  
